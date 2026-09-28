@@ -1,9 +1,17 @@
 import React from "react";
 
+import type { Metadata } from "next";
+
 import { Background } from "@/components/background";
 import { FAQ } from "@/components/blocks/faq";
 import { Testimonials } from "@/components/blocks/testimonials";
 import { DashedLine } from "@/components/dashed-line";
+
+export const metadata: Metadata = {
+  title: "FAQ",
+  description:
+    "Common questions about hiring ERP consultants through NetResolute, and about working with us as a consultant.",
+};
 
 const Page = () => {
   return (

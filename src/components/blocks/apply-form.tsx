@@ -1,15 +1,16 @@
 "use client";
+import { useRef, useState } from "react";
 
 import Link from "next/link";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Check } from "lucide-react";
+import { Check, Paperclip } from "lucide-react";
 import { motion } from "motion/react";
 import { useAction } from "next-safe-action/hooks";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { serverAction } from "@/actions/server-action";
+import { applyAction } from "@/actions/server-action";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -22,29 +23,41 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { formSchema } from "@/lib/form-schema";
+import { applySchema } from "@/lib/form-schema";
 
-type Schema = z.infer<typeof formSchema>;
+type Schema = z.infer<typeof applySchema>;
 
-export function ContactForm() {
+const ROLES = [
+  "Java Developer",
+  "Python Developer",
+  "DevOps Engineer",
+  "Business Analyst",
+  "Workday consultant",
+  "PeopleSoft consultant",
+  "Lawson consultant",
+  "UKG (Kronos) consultant",
+  "Something else",
+];
+
+export function ApplyForm({ defaultRole }: { defaultRole?: string }) {
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [fileName, setFileName] = useState("");
+
   const form = useForm<Schema>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(applySchema),
     defaultValues: {
       name: "",
       email: "",
-      company: "",
-      roles: "",
+      phone: "",
+      applyingFor: defaultRole ?? "",
+      resume: "",
       message: "",
       agree: false,
     } as unknown as Schema,
   });
-  const formAction = useAction(serverAction, {
-    onSuccess: () => {
-      form.reset();
-    },
-    onError: () => {
-      // TODO: surface a submit error state
-    },
+
+  const formAction = useAction(applyAction, {
+    onSuccess: () => form.reset(),
   });
   const handleSubmit = form.handleSubmit(async (data: Schema) => {
     formAction.execute(data);
@@ -77,7 +90,7 @@ export function ContactForm() {
             Thanks
           </h2>
           <p className="text-muted-foreground text-center text-lg text-pretty">
-            We&apos;ll reply within [1 business day] with next steps.
+            We&apos;ll match you to roles that fit and reply within [X] days.
           </p>
         </motion.div>
       </div>
@@ -93,7 +106,6 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="name"
-          rules={{ required: true }}
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>Full name * </FormLabel>
@@ -105,7 +117,6 @@ export function ContactForm() {
                   placeholder="First and last name"
                 />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -113,39 +124,59 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="email"
-          rules={{ required: true }}
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Work email * </FormLabel>
+              <FormLabel>Email * </FormLabel>
               <FormControl>
                 <Input
                   type="text"
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
-                  placeholder="you@company.com"
+                  placeholder="you@email.com"
                 />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="company"
-          rules={{ required: false }}
+          name="phone"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Company name </FormLabel>
+              <FormLabel>Phone </FormLabel>
               <FormControl>
                 <Input
                   type="text"
                   value={field.value}
                   onChange={(e) => field.onChange(e.target.value)}
-                  placeholder="Company name"
+                  placeholder="Best number to reach you"
                 />
               </FormControl>
-
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="applyingFor"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>Applying for * </FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  list="apply-roles"
+                  value={field.value}
+                  onChange={(e) => field.onChange(e.target.value)}
+                  placeholder="e.g. Java Developer"
+                />
+              </FormControl>
+              <datalist id="apply-roles">
+                {ROLES.map((role) => (
+                  <option key={role} value={role} />
+                ))}
+              </datalist>
               <FormMessage />
             </FormItem>
           )}
@@ -153,20 +184,34 @@ export function ContactForm() {
 
         <FormField
           control={form.control}
-          name="roles"
-          rules={{ required: false }}
+          name="resume"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Roles to fill </FormLabel>
+              <FormLabel>Resume * </FormLabel>
               <FormControl>
-                <Input
-                  type="text"
-                  value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
-                  placeholder="e.g. 2 Workday HCM consultants"
-                />
+                <div>
+                  <input
+                    ref={fileInput}
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="sr-only"
+                    onChange={(e) => {
+                      const name = e.target.files?.[0]?.name ?? "";
+                      setFileName(name);
+                      field.onChange(name);
+                    }}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full justify-start font-normal"
+                    onClick={() => fileInput.current?.click()}
+                  >
+                    <Paperclip className="size-4" />
+                    {fileName || "Attach a PDF or Word file"}
+                  </Button>
+                </div>
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
@@ -175,25 +220,22 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="message"
-          rules={{ required: true }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project details * </FormLabel>
+              <FormLabel>Anything else </FormLabel>
               <FormControl>
                 <Textarea
                   {...field}
-                  placeholder="Module, phase, start date, contract or permanent"
+                  placeholder="Modules you know best, availability, work authorization"
                   className="resize-none"
                 />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          rules={{ required: true }}
           name="agree"
           render={({ field }) => (
             <FormItem className="flex flex-row items-start space-y-0 space-x-1">
@@ -214,7 +256,6 @@ export function ContactForm() {
                     privacy policy
                   </Link>
                 </FormLabel>
-
                 <FormMessage />
               </div>
             </FormItem>
@@ -222,7 +263,7 @@ export function ContactForm() {
         />
         <div className="flex w-full items-center justify-end pt-3">
           <Button className="rounded-lg" size="sm">
-            {isExecuting ? "Sending..." : "Get a shortlist"}
+            {isExecuting ? "Sending..." : "Send my resume"}
           </Button>
         </div>
       </form>

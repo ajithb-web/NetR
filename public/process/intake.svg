@@ -1,0 +1,32 @@
+<svg width="495" height="186" viewBox="0 0 495 186" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0" y="0" width="470" height="210" rx="14" fill="#FFFFFF"/>
+<rect x="0.5" y="0.5" width="469" height="209" rx="13.5" stroke="#18181B" stroke-opacity="0.09"/>
+<text x="22" y="30" fill="#18181B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="-0.2" text-anchor="start">Intake call</text>
+<rect x="96" y="17" width="74" height="18" rx="9.0" fill="#EFE7D1"/>
+<text x="133.0" y="29.3" fill="#57523F" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="600" letter-spacing="-0.2" text-anchor="middle">20 minutes</text>
+<path d="M0 46 H470" stroke="#18181B" stroke-opacity="0.08"/>
+<text x="22" y="62" fill="#71717A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" letter-spacing="-0.2" text-anchor="start">Module</text>
+<rect x="22" y="70" width="208" height="30" rx="8" fill="#FFFFFF"/>
+<rect x="22.5" y="70.5" width="207" height="29" rx="7.5" stroke="#18181B" stroke-opacity="0.1"/>
+<text x="33" y="90" fill="#18181B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="-0.2" text-anchor="start">Workday HCM</text>
+<text x="254" y="62" fill="#71717A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" letter-spacing="-0.2" text-anchor="start">Phase</text>
+<rect x="254" y="70" width="208" height="30" rx="8" fill="#FFFFFF"/>
+<rect x="254.5" y="70.5" width="207" height="29" rx="7.5" stroke="#18181B" stroke-opacity="0.1"/>
+<text x="265" y="90" fill="#18181B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="-0.2" text-anchor="start">Testing → go-live</text>
+<text x="22" y="108" fill="#71717A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" letter-spacing="-0.2" text-anchor="start">Seniority</text>
+<rect x="22" y="116" width="208" height="30" rx="8" fill="#FFFFFF"/>
+<rect x="22.5" y="116.5" width="207" height="29" rx="7.5" stroke="#18181B" stroke-opacity="0.1"/>
+<text x="33" y="136" fill="#18181B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="-0.2" text-anchor="start">Senior / Lead</text>
+<text x="254" y="108" fill="#71717A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" letter-spacing="-0.2" text-anchor="start">Start</text>
+<rect x="254" y="116" width="208" height="30" rx="8" fill="#FFFFFF"/>
+<rect x="254.5" y="116.5" width="207" height="29" rx="7.5" stroke="#18181B" stroke-opacity="0.1"/>
+<text x="265" y="136" fill="#18181B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="-0.2" text-anchor="start">In 3 weeks</text>
+<text x="22" y="154" fill="#71717A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" letter-spacing="-0.2" text-anchor="start">Type</text>
+<rect x="22" y="162" width="208" height="30" rx="8" fill="#FFFFFF"/>
+<rect x="22.5" y="162.5" width="207" height="29" rx="7.5" stroke="#18181B" stroke-opacity="0.1"/>
+<text x="33" y="182" fill="#18181B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="-0.2" text-anchor="start">Contract, 9 months</text>
+<text x="254" y="154" fill="#71717A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="9.5" font-weight="500" letter-spacing="-0.2" text-anchor="start">Headcount</text>
+<rect x="254" y="162" width="208" height="30" rx="8" fill="#FFFFFF"/>
+<rect x="254.5" y="162.5" width="207" height="29" rx="7.5" stroke="#18181B" stroke-opacity="0.1"/>
+<text x="265" y="182" fill="#18181B" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="500" letter-spacing="-0.2" text-anchor="start">2 consultants</text>
+</svg>

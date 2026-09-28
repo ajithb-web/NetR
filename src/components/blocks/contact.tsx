@@ -2,19 +2,21 @@ import React from "react";
 
 import Link from "next/link";
 
-import { Facebook, Linkedin, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
+import { ApplyForm } from "@/components/blocks/apply-form";
 import { ContactForm } from "@/components/blocks/contact-form";
 import { DashedLine } from "@/components/dashed-line";
+import { site } from "@/lib/site";
 
 const contactInfo = [
   {
-    title: "Corporate office",
+    title: "New York office",
     content: (
       <p className="text-muted-foreground mt-3">
-        1 Carlsberg Close
+        {site.address.line1}
         <br />
-        1260 Hillview, Australia
+        {site.address.line2}
       </p>
     ),
   },
@@ -23,22 +25,27 @@ const contactInfo = [
     content: (
       <div className="mt-3">
         <div>
-          <p className="">Careers</p>
+          <p className="">Hiring</p>
           <Link
-            href="mailto:careers@example.com"
+            href={`mailto:${site.email}`}
             className="text-muted-foreground hover:text-foreground"
           >
-            careers@example.com
+            {site.email}
           </Link>
         </div>
         <div className="mt-1">
-          <p className="">Press</p>
+          <p className="">Careers</p>
           <Link
-            href="mailto:press@example.com"
+            href={`mailto:${site.careersEmail}`}
             className="text-muted-foreground hover:text-foreground"
           >
-            press@example.com
+            {site.careersEmail}
           </Link>
+        </div>
+        <div className="mt-1">
+          <p className="">Phone</p>
+          {/* TODO: one confirmed phone number */}
+          <p className="text-muted-foreground">{site.phone}</p>
         </div>
       </div>
     ),
@@ -47,16 +54,11 @@ const contactInfo = [
     title: "Follow us",
     content: (
       <div className="mt-3 flex gap-6 lg:gap-10">
-        <Link href="#" className="text-muted-foreground hover:text-foreground">
-          <Facebook className="size-5" />
-        </Link>
         <Link
-          href="https://x.com/ausrobdev"
+          href={site.linkedin}
           className="text-muted-foreground hover:text-foreground"
+          aria-label="NetResolute on LinkedIn"
         >
-          <Twitter className="size-5" />
-        </Link>
-        <Link href="#" className="text-muted-foreground hover:text-foreground">
           <Linkedin className="size-5" />
         </Link>
       </div>
@@ -64,15 +66,44 @@ const contactInfo = [
   },
 ];
 
-export default function Contact() {
+export default function Contact({
+  intent,
+  role,
+}: {
+  intent?: string;
+  role?: string;
+}) {
+  const applying = intent === "apply";
+
   return (
     <section className="py-28 lg:py-32 lg:pt-44">
       <div className="container max-w-2xl">
         <h1 className="text-center text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
-          Contact us
+          {applying ? "Send us your resume" : "Get in touch"}
         </h1>
         <p className="text-muted-foreground mt-4 text-center leading-snug font-medium lg:mx-auto">
-          Hopefully this form gets through our spam filters.
+          {applying
+            ? "Tell us what you do best. We'll match you to roles that fit and reply within [X] days."
+            : "Tell us the role. We'll reply within [1 business day]."}
+        </p>
+        <p className="text-muted-foreground mt-2 text-center text-sm">
+          {applying ? (
+            <>
+              Hiring instead?{" "}
+              <Link href="/contact" className="underline underline-offset-4">
+                Tell us the role you need
+              </Link>
+              .
+            </>
+          ) : (
+            <>
+              Looking for work?{" "}
+              <Link href="/careers" className="underline underline-offset-4">
+                Apply on our Careers page
+              </Link>
+              .
+            </>
+          )}
         </p>
 
         <div className="mt-10 flex justify-between gap-8 max-sm:flex-col md:mt-14 lg:mt-20 lg:gap-12">
@@ -86,10 +117,11 @@ export default function Contact() {
 
         <DashedLine className="my-12" />
 
-        {/* Inquiry Form */}
         <div className="mx-auto">
-          <h2 className="mb-4 text-lg font-semibold">Inquiries</h2>
-          <ContactForm />
+          <h2 className="mb-4 text-lg font-semibold">
+            {applying ? "Your application" : "Tell us what you need"}
+          </h2>
+          {applying ? <ApplyForm defaultRole={role} /> : <ContactForm />}
         </div>
       </div>
     </section>

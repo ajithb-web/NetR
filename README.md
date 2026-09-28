@@ -1,78 +1,51 @@
-# Mainline Next.js Template
+# NetResolute website
 
-Mainline is a free template built with shadcn/ui, Tailwind 4 and Next.js 15.
+Marketing site for NetResolute — an IT consulting and staffing firm placing
+senior Workday, PeopleSoft, Lawson and UKG consultants, plus engineering talent.
 
-- [Demo](https://mainline-nextjs-template.vercel.app/)
-- [Documentation](https://docs.shadcnblocks.com/templates/getting-started)
-- [Figma](https://www.figma.com/design/cFCLMj7DFv0sK7EVsqKeTa/Mainline?node-id=23250-13201&t=I1nAdchDpknii5Bd-1)
+Built on the [Mainline](https://github.com/shadcnblocks/mainline-nextjs-template)
+Next.js template (MIT) with shadcn/ui, Tailwind 4 and MDX. Copy comes from the
+_NetResolute Website Copy (Mainline template)_ deck.
 
-![Mainline NextJS Template screenshot](./public/og-image.jpg)
-
-## Getting Started
+## Run it
 
 ```bash
 npm install
-```
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-## Features
+```bash
+npm run build   # production build + lint + typecheck
+npm run format  # prettier
+```
 
-### Core Technology Stack
+## Pages
 
-- **Next.js 15** with App Router
-- **Tailwind CSS 4** for styling
-- **shadcn/ui** components
-- **TypeScript** support
-- **React 19**
+| Route      | Blocks                                                                              |
+| ---------- | ----------------------------------------------------------------------------------- |
+| `/`        | Hero, platform strip, features, engagement process, testimonials, FAQ               |
+| `/about`   | Hero + stats, Who we are, Mission, Leadership                                       |
+| `/careers` | Hero, What you get, Open roles accordion, consultant testimonials                   |
+| `/faq`     | Common questions, testimonials                                                      |
+| `/contact` | Office/email/phone, enquiry form (`?intent=apply` switches to the application form) |
+| `/privacy` | MDX — placeholder, needs counsel-written copy                                       |
 
-### Key Features
+Pricing, login and signup were removed; the nav slot became Careers.
 
-- **Shadcn UI**: uses [shadcn/ui](https://ui.shadcn.com/) core UI components
-- **Theme System**: Dark/light mode with `next-themes`, compatible with [tweakcn](https://tweakcn.com)
-- **Form Handling**: React Hook Form + Zod validation
-- **Server Actions**: Next-safe-action integration for server-side logic
-- **MDX Support**: For content pages
-- **Animations**: Motion library (Framer Motion) integration
-- **ESLint/Prettier**: Pre-configured code formatting and linting
-- **Custom Fonts**: DM Sans font family included
-- **Icons**: Lucide React + React Icons libraries
-- **Styleglide Integration**: For component previews/development
-- **Responsive Design**: Mobile-friendly layout
-- **SEO Ready**: Proper metadata and OG images included
+## Where the content lives
 
-### Pre-built Pages
+- `src/lib/site.ts` — company name, address, emails, phone, LinkedIn
+- `src/components/blocks/*` — every section, content at the top of each file
+- `src/app/careers/page.tsx` — open roles, "What you get" cards
+- `src/app/privacy/privacy.mdx` — privacy policy
 
-- Home/Landing page
-- About page
-- Pricing page
-- FAQ page
-- Contact page with form
-- Login/Signup pages
+## Before launch
 
-### Blocks
-
-- Hero section
-- Logo showcase/marquee
-- Features section
-- Resource allocation section
-- Testimonials with carousel
-- Pricing table
-- FAQ with accordion
-- Footer
-- Navigation bar
-
-## Deployment
-
-Production-ready and tested for deployment on [Vercel](https://vercel.com)
+See [OPEN-ITEMS.md](./OPEN-ITEMS.md). Anything still in `[square brackets]` on
+the site is an unconfirmed value from the copy deck.
 
 ## Credits
 
-- Template by [shadcnblocks.com](https://shadcnblocks.com)
-- Design by [Callum Flack](https://x.com/callumflack)
-- Dev by [Yassine Zaanouni](https://x.com/YassineZaanouni)
-- Produced by [Rob Austin](https://x.com/ausrobdev)
+Template by [shadcnblocks.com](https://shadcnblocks.com), MIT licensed.

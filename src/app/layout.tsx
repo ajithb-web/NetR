@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 
 import { Footer } from "@/components/blocks/footer";
 import { Navbar } from "@/components/blocks/navbar";
-import { StyleGlideProvider } from "@/components/styleglide-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
 
@@ -62,30 +61,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.netresolute.com"),
   title: {
-    default: "Mainline - Modern Next.js Template",
-    template: "%s | Mainline",
+    default: "NetResolute - Senior ERP consultants, vetted",
+    template: "%s | NetResolute",
   },
   description:
-    "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
+    "Senior Workday, PeopleSoft, Lawson and UKG consultants, interviewed by us before you meet them. Contract or permanent, one hire or a full team.",
   keywords: [
-    "Next.js",
-    "nextjs template",
-    "nextjs theme",
-    "nextjs starter",
-    "shadcn template",
-    "shadcn theme",
-    "shadcn starter",
-    "tailwind template",
-    "tailwind theme",
-    "tailwind starter",
-    "mdx template",
-    "mdx theme",
-    "mdx starter",
+    "ERP consultants",
+    "Workday consultants",
+    "PeopleSoft consultants",
+    "Lawson consultants",
+    "UKG Kronos consultants",
+    "IT staffing New York",
+    "HCM consulting",
+    "IT consulting firm",
+    "contract ERP talent",
+    "implementation team staffing",
   ],
-  authors: [{ name: "shadcnblocks.com" }],
-  creator: "shadcnblocks.com",
-  publisher: "shadcnblocks.com",
+  authors: [{ name: "NetResolute" }],
+  creator: "NetResolute",
+  publisher: "NetResolute",
   robots: {
     index: true,
     follow: true,
@@ -95,33 +92,22 @@ export const metadata: Metadata = {
       { url: "/favicon/favicon.ico", sizes: "48x48" },
       { url: "/favicon/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon/favicon.ico" },
     ],
     apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: [{ url: "/favicon/favicon.ico" }],
   },
   openGraph: {
-    title: "Mainline - Modern Next.js Template",
+    title: "NetResolute - Senior ERP consultants, vetted",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
-    siteName: "Mainline",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Mainline - Modern Next.js Template",
-      },
-    ],
+      "Workday, PeopleSoft, Lawson and UKG experts, interviewed by us before you meet them.",
+    siteName: "NetResolute",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mainline - Modern Next.js Template",
+    title: "NetResolute - Senior ERP consultants, vetted",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
-    images: ["/og-image.jpg"],
-    creator: "@ausrobdev",
+      "Workday, PeopleSoft, Lawson and UKG experts, interviewed by us before you meet them.",
   },
 };
 
@@ -132,13 +118,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          async
-          crossOrigin="anonymous"
-          src="https://tweakcn.com/live-preview.min.js"
-        />
-      </head>
       <body className={`${dmSans.variable} ${inter.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -146,7 +125,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <StyleGlideProvider />
           <Navbar />
           <main className="">{children}</main>
           <Footer />

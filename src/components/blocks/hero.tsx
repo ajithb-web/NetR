@@ -1,36 +1,31 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import {
-  ArrowRight,
-  Blend,
-  ChartNoAxesColumn,
-  CircleDot,
-  Diamond,
-} from "lucide-react";
+import { ArrowRight, Blend, CircleDot, Database, Diamond } from "lucide-react";
 
 import { DashedLine } from "@/components/dashed-line";
 import { Button } from "@/components/ui/button";
 
 const features = [
   {
-    title: "Tailored workflows",
-    description: "Track progress across custom issue flows for your team.",
+    title: "Workday",
+    description: "HCM and Financials, functional or technical.",
     icon: CircleDot,
   },
   {
-    title: "Cross-team projects",
-    description: "Collaborate across teams and departments.",
+    title: "PeopleSoft & Lawson",
+    description: "One senior hire or a full team for upgrades.",
     icon: Blend,
   },
   {
-    title: "Milestones",
-    description: "Break projects down into concrete phases.",
+    title: "UKG (Kronos)",
+    description: "Setup, testing, training and go-live support.",
     icon: Diamond,
   },
   {
-    title: "Progress insights",
-    description: "Track scope, velocity, and progress over time.",
-    icon: ChartNoAxesColumn,
+    title: "Engineering & data",
+    description: "Java, Python, DevOps, AWS, data and BA roles.",
+    icon: Database,
   },
 ];
 
@@ -41,37 +36,35 @@ export const Hero = () => {
         {/* Left side - Main content */}
         <div className="flex-1">
           <h1 className="text-foreground max-w-160 text-3xl tracking-tight md:text-4xl lg:text-5xl xl:whitespace-nowrap">
-            Mainline Next.js template
+            Senior ERP consultants, vetted
           </h1>
 
           <p className="text-muted-foreground text-1xl mt-5 md:text-3xl">
-            Mainline is an open-source website template built with shadcn/ui,
-            Tailwind 4 & Next.js
+            Workday, PeopleSoft, Lawson and UKG experts, interviewed by us
+            before you meet them.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4 lg:flex-nowrap">
             <Button asChild>
-              <a href="https://github.com/shadcnblocks/mainline-nextjs-template">
-                Get template
-              </a>
+              <Link href="/contact">Get a shortlist</Link>
             </Button>
             <Button
               variant="outline"
               className="from-background h-auto gap-2 bg-linear-to-r to-transparent shadow-md"
               asChild
             >
-              <a
-                href="https://shadcnblocks.com"
+              <Link
+                href="/careers"
                 className="max-w-56 truncate text-start md:max-w-none"
               >
-                Built by shadcnblocks.com
+                Looking for work? Apply
                 <ArrowRight className="stroke-3" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
 
-        {/* Right side - Features */}
+        {/* Right side - Coverage */}
         <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-10">
           <DashedLine
             orientation="vertical"
@@ -103,9 +96,10 @@ export const Hero = () => {
       <div className="mt-12 max-lg:ml-6 max-lg:h-[550px] max-lg:overflow-hidden md:mt-20 lg:container lg:mt-24">
         <div className="relative h-[793px] w-full">
           <Image
-            src="/hero.webp"
-            alt="hero"
+            src="/hero/workspace.svg"
+            alt="A NetResolute shortlist: senior Workday candidates, each interviewed before the client sees them"
             fill
+            priority
             className="rounded-2xl object-cover object-left-top shadow-lg max-lg:rounded-tr-none"
           />
         </div>

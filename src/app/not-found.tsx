@@ -15,8 +15,8 @@ export default function NotFound() {
           </h1>
 
           <p className="text-muted-foreground mb-10 text-xl">
-            Sorry, we couldn't find the page you're looking for. The page might
-            have been removed or the URL might be incorrect.
+            That page has moved or never existed. If you were looking for a
+            role, the open ones are on our Careers page.
           </p>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -32,7 +32,7 @@ export default function NotFound() {
               size="lg"
               className="min-w-[200px]"
             >
-              <Link href="/contact">Contact Support</Link>
+              <Link href="/careers">See open roles</Link>
             </Button>
           </div>
         </div>
